@@ -1,16 +1,15 @@
+import FeedbackField from './FeedbackField/FeedbackField';
+import feedbackOptions from '../Utils/feedbackOptions.json';
+import Statistics from './Statistics/Statistics';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div className="mainContainer">
+      <FeedbackField
+        text="Please leave feedback"
+        feedbackOptions={feedbackOptions}
+      />
+      <Statistics heading="qwe" />
     </div>
   );
 };
