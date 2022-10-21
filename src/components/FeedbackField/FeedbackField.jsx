@@ -6,26 +6,36 @@ import {
   FeedbackOptionsButton,
   FeedbackOptionsItem,
   FeedbackOptionsList,
+  StatisticsDataTitle,
+  StatisticsDataList,
+  StatisticsDataItem,
 } from './FeedbackField.styled';
 
 class FeedbackField extends React.Component {
   state = {
-    text: this.props.text,
-    feedbackOptions: this.props.feedbackOptions,
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
+  handleIncrement = e => {
+    const target = e.target.name;
+    this.setState(previous => ({ [target]: previous[target] + 1 }));
   };
 
   render() {
-    const { feedbackOptions, text } = this.state;
+    const { feedbackOptions } = this.props;
     return (
       <FeedbackFieldWrapper>
-        <FeedbackFieldElement>{text}</FeedbackFieldElement>
+        <FeedbackFieldElement>Please leave feedback</FeedbackFieldElement>
         <FeedbackOptionsList>
           {feedbackOptions.map(item => {
             return (
               <FeedbackOptionsItem key={item.name}>
                 <FeedbackOptionsButton
                   type="button"
-                  onClick={() => console.log('click')}
+                  name={item.name}
+                  onClick={this.handleIncrement}
                 >
                   {item.value}
                 </FeedbackOptionsButton>
@@ -33,6 +43,16 @@ class FeedbackField extends React.Component {
             );
           })}
         </FeedbackOptionsList>
+        <StatisticsDataTitle>Statistics</StatisticsDataTitle>
+        <StatisticsDataList>
+          {feedbackOptions.map(item => {
+            return (
+              <StatisticsDataItem key={item.name}>
+                {item.value}: <span>{this.state[item.name]}</span>
+              </StatisticsDataItem>
+            );
+          })}
+        </StatisticsDataList>
       </FeedbackFieldWrapper>
     );
   }
