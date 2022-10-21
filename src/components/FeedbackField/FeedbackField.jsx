@@ -1,28 +1,44 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
+  FeedbackFieldWrapper,
   FeedbackFieldElement,
   FeedbackOptionsButton,
   FeedbackOptionsItem,
   FeedbackOptionsList,
 } from './FeedbackField.styled';
 
-export default function FeedbackField({ text, feedbackOptions }) {
-  return (
-    <div>
-      <FeedbackFieldElement>{text}</FeedbackFieldElement>
-      <FeedbackOptionsList>
-        {feedbackOptions.map(item => {
-          return (
-            <FeedbackOptionsItem key={item.name}>
-              <FeedbackOptionsButton>{item.value}</FeedbackOptionsButton>
-            </FeedbackOptionsItem>
-          );
-        })}
-      </FeedbackOptionsList>
-    </div>
-  );
+class FeedbackField extends React.Component {
+  state = {
+    text: this.props.text,
+    feedbackOptions: this.props.feedbackOptions,
+  };
+
+  render() {
+    const { feedbackOptions, text } = this.state;
+    return (
+      <FeedbackFieldWrapper>
+        <FeedbackFieldElement>{text}</FeedbackFieldElement>
+        <FeedbackOptionsList>
+          {feedbackOptions.map(item => {
+            return (
+              <FeedbackOptionsItem key={item.name}>
+                <FeedbackOptionsButton
+                  type="button"
+                  onClick={() => console.log('click')}
+                >
+                  {item.value}
+                </FeedbackOptionsButton>
+              </FeedbackOptionsItem>
+            );
+          })}
+        </FeedbackOptionsList>
+      </FeedbackFieldWrapper>
+    );
+  }
 }
+
+export default FeedbackField;
 
 FeedbackField.propTypes = {
   test: PropTypes.string,

@@ -9,7 +9,7 @@ export const App = () => {
         text="Please leave feedback"
         feedbackOptions={feedbackOptions}
       />
-      <Statistics heading="qwe" />
+      <Statistics heading="Statistics" options={feedbackOptions} />
     </div>
   );
 };

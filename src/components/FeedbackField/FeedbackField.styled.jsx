@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const FeedbackFieldWrapper = styled.div`
+  margin-bottom: 10px;
+`;
+
 export const FeedbackFieldElement = styled.p`
   margin-bottom: 10px;
   font-size: 24px;

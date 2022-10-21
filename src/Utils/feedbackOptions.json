@@ -1,5 +1,5 @@
 [
-  { "name": "good", "value": "good" },
-  { "name": "neutral", "value": "neutral" },
-  { "name": "bad", "value": "bad" }
+  { "name": "good", "value": "Good" },
+  { "name": "neutral", "value": "Neutral" },
+  { "name": "bad", "value": "Bad" }
 ]
