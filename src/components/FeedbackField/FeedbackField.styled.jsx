@@ -36,13 +36,23 @@ export const StatisticsDataTitle = styled.h1`
   font-size: 24px;
 `;
 
-export const StatisticsDataList = styled.ul``;
+export const StatisticsDataList = styled.ul`
+  margin-bottom: 5px;
+`;
 
 export const StatisticsDataItem = styled.li`
   font-size: 18px;
   &:not(:last-child) {
     margin-bottom: 5px;
   }
+  & span {
+    margin-left: 5px;
+  }
+`;
+
+export const StatisticsTotal = styled.p`
+  font-size: 18px;
+  margin-bottom: 5px;
   & span {
     margin-left: 5px;
   }

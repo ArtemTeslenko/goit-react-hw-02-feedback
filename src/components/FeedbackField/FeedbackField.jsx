@@ -9,6 +9,7 @@ import {
   StatisticsDataTitle,
   StatisticsDataList,
   StatisticsDataItem,
+  StatisticsTotal,
 } from './FeedbackField.styled';
 
 class FeedbackField extends React.Component {
@@ -21,6 +22,18 @@ class FeedbackField extends React.Component {
   handleIncrement = e => {
     const target = e.target.name;
     this.setState(previous => ({ [target]: previous[target] + 1 }));
+  };
+
+  countTotalFeedback = () =>
+    this.state.good + this.state.neutral + this.state.bad;
+
+  countPositiveFeedbackPercentage = () => {
+    const check = this.countTotalFeedback();
+    if (check) {
+      return Math.floor((this.state.good / this.countTotalFeedback()) * 100);
+    } else {
+      return 0;
+    }
   };
 
   render() {
@@ -53,6 +66,13 @@ class FeedbackField extends React.Component {
             );
           })}
         </StatisticsDataList>
+        <StatisticsTotal>
+          Total: <span>{this.countTotalFeedback()}</span>
+        </StatisticsTotal>
+        <StatisticsTotal>
+          Positive feedback:{' '}
+          <span>{this.countPositiveFeedbackPercentage()}%</span>
+        </StatisticsTotal>
       </FeedbackFieldWrapper>
     );
   }
