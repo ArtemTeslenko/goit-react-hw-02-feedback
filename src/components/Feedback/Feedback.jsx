@@ -6,13 +6,10 @@ import {
   FeedbackOptionsButton,
   FeedbackOptionsItem,
   FeedbackOptionsList,
-  StatisticsDataTitle,
-  StatisticsDataList,
-  StatisticsDataItem,
-  StatisticsTotal,
-} from './FeedbackField.styled';
+} from './Feedback.styled';
+import Statistics from '../Statistics/Statistics';
 
-class FeedbackField extends React.Component {
+class Feedback extends React.Component {
   state = {
     good: 0,
     neutral: 0,
@@ -38,6 +35,7 @@ class FeedbackField extends React.Component {
 
   render() {
     const { feedbackOptions } = this.props;
+    const { good, neutral, bad } = this.state;
     return (
       <FeedbackFieldWrapper>
         <FeedbackFieldElement>Please leave feedback</FeedbackFieldElement>
@@ -56,31 +54,21 @@ class FeedbackField extends React.Component {
             );
           })}
         </FeedbackOptionsList>
-        <StatisticsDataTitle>Statistics</StatisticsDataTitle>
-        <StatisticsDataList>
-          {feedbackOptions.map(item => {
-            return (
-              <StatisticsDataItem key={item.name}>
-                {item.value}: <span>{this.state[item.name]}</span>
-              </StatisticsDataItem>
-            );
-          })}
-        </StatisticsDataList>
-        <StatisticsTotal>
-          Total: <span>{this.countTotalFeedback()}</span>
-        </StatisticsTotal>
-        <StatisticsTotal>
-          Positive feedback:{' '}
-          <span>{this.countPositiveFeedbackPercentage()}%</span>
-        </StatisticsTotal>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        ></Statistics>
       </FeedbackFieldWrapper>
     );
   }
 }
 
-export default FeedbackField;
+export default Feedback;
 
-FeedbackField.propTypes = {
+Feedback.propTypes = {
   test: PropTypes.string,
   feedbackOptions: PropTypes.arrayOf(
     PropTypes.shape({

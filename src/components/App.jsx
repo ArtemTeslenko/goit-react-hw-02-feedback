@@ -1,10 +1,10 @@
-import FeedbackField from './FeedbackField/FeedbackField';
+import Feedback from './Feedback/Feedback';
 import feedbackOptions from '../Utils/feedbackOptions.json';
 
 export const App = () => {
   return (
     <div className="mainContainer">
-      <FeedbackField feedbackOptions={feedbackOptions} />
+      <Feedback feedbackOptions={feedbackOptions} />
     </div>
   );
 };

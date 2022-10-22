@@ -30,30 +30,3 @@ export const FeedbackOptionsButton = styled.button`
     color: #ffffff;
   }
 `;
-
-export const StatisticsDataTitle = styled.h1`
-  margin-bottom: 15px;
-  font-size: 24px;
-`;
-
-export const StatisticsDataList = styled.ul`
-  margin-bottom: 5px;
-`;
-
-export const StatisticsDataItem = styled.li`
-  font-size: 18px;
-  &:not(:last-child) {
-    margin-bottom: 5px;
-  }
-  & span {
-    margin-left: 5px;
-  }
-`;
-
-export const StatisticsTotal = styled.p`
-  font-size: 18px;
-  margin-bottom: 5px;
-  & span {
-    margin-left: 5px;
-  }
-`;
