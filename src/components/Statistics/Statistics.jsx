@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  StatisticsWrapper,
-  StatisticsDataTitle,
-  StatisticsUnitInfo,
-} from './Statistics.styled';
+import { StatisticsWrapper, StatisticsUnitInfo } from './Statistics.styled';
 
 function Statistics(props) {
   const { good, neutral, bad, total, positivePercentage } = props;
   return (
     <StatisticsWrapper>
-      <StatisticsDataTitle>Statistics</StatisticsDataTitle>
       <StatisticsUnitInfo>Good: {good}</StatisticsUnitInfo>
       <StatisticsUnitInfo>Neutral: {neutral}</StatisticsUnitInfo>
       <StatisticsUnitInfo>Bad: {bad}</StatisticsUnitInfo>

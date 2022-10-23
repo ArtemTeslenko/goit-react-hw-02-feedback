@@ -14,16 +14,13 @@ code {
     monospace;
 }
 
-body {
-  background-color: #444444;
-}
-
 * {
   box-sizing: border-box;
 }
 
 p,
-h1 {
+h1,
+h2 {
   margin: 0;
 }
 

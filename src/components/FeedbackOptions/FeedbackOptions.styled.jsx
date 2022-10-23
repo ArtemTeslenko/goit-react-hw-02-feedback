@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-export const FeedbackFieldWrapper = styled.div``;
-
-export const FeedbackFieldElement = styled.p`
-  margin-bottom: 10px;
-  font-size: 24px;
-`;
+export const FeedbackOptionsWrapper = styled.div``;
 
 export const FeedbackOptionsList = styled.ul`
   display: flex;
