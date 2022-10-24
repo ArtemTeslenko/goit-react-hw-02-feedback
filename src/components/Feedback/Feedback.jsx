@@ -7,32 +7,11 @@ import Notification from '../Notification/Notification';
 import { StatisticsTitle } from '../Statistics/Statistics.styled';
 
 class Feedback extends React.Component {
-  constructor() {
-    super();
-    this.total = 0;
-    this.positive = 0;
-  }
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-
-  get totalFeedback() {
-    return this.total;
-  }
-
-  set totalFeedback(newTotal) {
-    this.total = newTotal;
-  }
-
-  get positiveValue() {
-    return this.positive;
-  }
-
-  set positiveValue(newPositive) {
-    this.positive = newPositive;
-  }
 
   handleIncrement = e => {
     const target = e.target.name;
@@ -52,8 +31,8 @@ class Feedback extends React.Component {
   };
 
   render() {
-    this.totalFeedback = this.countTotalFeedback();
-    this.positiveValue = this.countPositiveFeedbackPercentage();
+    const total = this.countTotalFeedback();
+    const positive = this.countPositiveFeedbackPercentage();
     const { feedbackOptions } = this.props;
     const { good, neutral, bad } = this.state;
     return (
@@ -63,13 +42,13 @@ class Feedback extends React.Component {
           onLeaveFeedback={this.handleIncrement}
         ></FeedbackOptions>
         <StatisticsTitle>Statistics</StatisticsTitle>
-        {this.totalFeedback ? (
+        {total ? (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={this.totalFeedback}
-            positivePercentage={this.positiveValue}
+            total={total}
+            positivePercentage={positive}
           ></Statistics>
         ) : (
           <Notification message="There is no feedback" />
